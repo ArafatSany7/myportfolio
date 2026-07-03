@@ -1,5 +1,22 @@
 
-node_modules
-dist
-.env
-/generated/prisma
+
+/node_modules
+
+/.next/
+/out/
+
+
+.DS_Store
+*.pem
+
+
+npm-debug.log*
+
+.env*
+
+
+.vercel
+
+
+*.tsbuildinfo
+next-env.d.ts

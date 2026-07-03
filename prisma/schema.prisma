@@ -1,0 +1,105 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Admin {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Skill {
+  id         String   @id @default(cuid())
+  name       String
+  categoryId String
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  icon       String?
+  createdAt  DateTime @default(now())
+}
+
+model Category {
+  id     String  @id @default(cuid())
+  name   String  @unique
+  skills Skill[]
+}
+
+model Project {
+  id                 String   @id @default(cuid())
+  name               String
+  description        String
+  image              String?
+  liveUrl            String?
+  githubUrl          String?
+  purpose            String?
+  targetUsers        String?
+  keyFeatures        String[]
+  challenges         String?
+  futureImprovements String?
+  tags               String[]
+  createdAt          DateTime @default(now())
+}
+
+model Certificate {
+  id          String   @id @default(cuid())
+  title       String
+  issuer      String
+  image       String?
+  keyFeatures String[]
+  createdAt   DateTime @default(now())
+}
+
+model Service {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  icon        String?
+  createdAt   DateTime @default(now())
+}
+
+model Education {
+  id              String   @id @default(cuid())
+  degree          String
+  institution     String
+  passingYear     String
+  gpa             String?
+  cgpa            String?
+  currentSemester String?
+  createdAt       DateTime @default(now())
+}
+
+model Experience {
+  id          String   @id @default(cuid())
+  role        String
+  company     String
+  duration    String
+  description String
+  createdAt   DateTime @default(now())
+}
+
+model About {
+  id           String   @id @default(cuid())
+  whoIAm       String
+  whatImDoing  String
+  futureGoal   String
+  profileImage String?
+  createdAt    DateTime @default(now())
+}
+
+model ContactInfo {
+  id        String   @id @default(cuid())
+  email     String
+  location  String
+  github    String?
+  linkedin  String?
+  facebook  String?
+  createdAt DateTime @default(now())
+}
