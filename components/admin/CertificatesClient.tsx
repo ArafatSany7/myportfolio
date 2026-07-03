@@ -12,6 +12,8 @@ const certificateSchema = z.object({
   title: z.string().min(1, "Title is required"),
   issuer: z.string().min(1, "Issuer is required"),
   image: z.string().optional().or(z.literal("")),
+  credentialUrl: z.string().optional().or(z.literal("")),
+  learningSummary: z.string().optional().or(z.literal("")),
   keyFeatures: z.string().optional().or(z.literal("")), // comma separated
 });
 
@@ -35,6 +37,8 @@ export default function CertificatesClient() {
       title: "",
       issuer: "",
       image: "",
+      credentialUrl: "",
+      learningSummary: "",
       keyFeatures: "",
     },
   });
@@ -87,6 +91,8 @@ export default function CertificatesClient() {
       title: certificate.title,
       issuer: certificate.issuer,
       image: certificate.image || "",
+      credentialUrl: certificate.credentialUrl || "",
+      learningSummary: certificate.learningSummary || "",
       keyFeatures: certificate.keyFeatures ? certificate.keyFeatures.join(", ") : "",
     });
     setEditingId(certificate.id);
@@ -150,6 +156,25 @@ export default function CertificatesClient() {
                   onRemove={() => field.onChange("")}
                 />
               )}
+            />
+          </div>
+
+          <div className="space-y-2">
+            <label className="text-sm font-medium text-foreground">Credential URL</label>
+            <input
+              {...register("credentialUrl")}
+              placeholder="https://..."
+              className="w-full bg-background border border-border rounded-md px-3 py-2 text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+            />
+          </div>
+
+          <div className="space-y-2">
+            <label className="text-sm font-medium text-foreground">Learning Summary</label>
+            <textarea
+              {...register("learningSummary")}
+              placeholder="A short paragraph about how this certificate helps..."
+              rows={3}
+              className="w-full bg-background border border-border rounded-md px-3 py-2 text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
             />
           </div>
 

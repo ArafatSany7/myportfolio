@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { GraduationCap, Award, X, ExternalLink } from "lucide-react";
+import { GraduationCap, Award, X, ExternalLink, Info } from "lucide-react";
 import { FadeIn } from "@/components/animations/FadeIn";
 
 export function JourneyClient({ education, certificates }: { education: any[]; certificates: any[] }) {
@@ -118,14 +118,27 @@ export function JourneyClient({ education, certificates }: { education: any[]; c
                   <div className="card-body p-5 flex flex-col flex-1">
                     <h4 className="card-title text-lg font-bold">{cert.title}</h4>
                     <p className="text-sm text-muted-foreground mb-4">{cert.issuer}</p>
-                    <div className="card-actions justify-end mt-auto pt-4 border-t border-border">
+                    <div className="card-actions justify-end mt-auto pt-4 border-t border-border gap-2">
+                      {cert.credentialUrl && (
+                        <a 
+                          href={cert.credentialUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1 group/btn relative overflow-hidden border border-primary text-primary font-medium rounded-lg py-2 flex items-center justify-center gap-1.5 hover:text-primary-foreground transition-colors duration-300 text-sm"
+                        >
+                          <span className="absolute inset-0 w-full h-full bg-primary scale-x-0 group-hover/btn:scale-x-100 origin-left transition-transform duration-300 ease-out z-0"></span>
+                          <span className="relative z-10 flex items-center gap-1.5">
+                            <ExternalLink size={14} /> Credential
+                          </span>
+                        </a>
+                      )}
                       <button 
                         onClick={() => setSelectedCert(cert)}
-                        className="group/btn relative overflow-hidden border border-primary text-primary font-medium rounded-lg w-full py-2 flex items-center justify-center gap-2 hover:text-primary-foreground transition-colors duration-300"
+                        className="flex-1 group/btn relative overflow-hidden border border-primary text-primary font-medium rounded-lg py-2 flex items-center justify-center gap-1.5 hover:text-primary-foreground transition-colors duration-300 text-sm"
                       >
                         <span className="absolute inset-0 w-full h-full bg-primary scale-x-0 group-hover/btn:scale-x-100 origin-left transition-transform duration-300 ease-out z-0"></span>
-                        <span className="relative z-10 flex items-center gap-2">
-                          <ExternalLink size={16} /> View Credential
+                        <span className="relative z-10 flex items-center gap-1.5">
+                          <Info size={14} /> Course Info
                         </span>
                       </button>
                     </div>
@@ -182,7 +195,16 @@ export function JourneyClient({ education, certificates }: { education: any[]; c
                   <Award size={16} /> Certification
                 </div>
                 <h3 className="text-2xl font-bold mb-2">{selectedCert.title}</h3>
-                <p className="text-muted-foreground mb-6 border-b border-border pb-4">Issued by: <span className="font-semibold text-foreground">{selectedCert.issuer}</span></p>
+                <p className="text-muted-foreground mb-4 border-b border-border pb-4">Issued by: <span className="font-semibold text-foreground">{selectedCert.issuer}</span></p>
+                
+                {selectedCert.learningSummary && (
+                  <div className="mb-6 bg-primary/5 rounded-lg p-4 border border-primary/10">
+                    <h4 className="text-lg font-semibold text-primary mb-2">Learning Summary:</h4>
+                    <p className="text-sm text-foreground/80 leading-relaxed italic">
+                      "{selectedCert.learningSummary}"
+                    </p>
+                  </div>
+                )}
                 
                 {selectedCert.keyFeatures && selectedCert.keyFeatures.length > 0 && (
                   <>

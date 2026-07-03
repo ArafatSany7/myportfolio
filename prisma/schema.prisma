@@ -49,12 +49,14 @@ model Project {
 }
 
 model Certificate {
-  id          String   @id @default(cuid())
-  title       String
-  issuer      String
-  image       String?
-  keyFeatures String[]
-  createdAt   DateTime @default(now())
+  id              String   @id @default(cuid())
+  title           String
+  issuer          String
+  image           String?
+  credentialUrl   String?
+  learningSummary String?
+  keyFeatures     String[]
+  createdAt       DateTime @default(now())
 }
 
 model Service {
