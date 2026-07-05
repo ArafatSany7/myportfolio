@@ -21,6 +21,10 @@ const STATIC_CATEGORIES = [
       { id: 's8', name: "Node.js", icon: "SiNodedotjs" },
       { id: 's9', name: "Express.js", icon: "SiExpress" },
       { id: 's10', name: "REST API", icon: "SiNodedotjs" },
+      { id: 's10b', name: "GraphQL", icon: "SiGraphql" },
+      { id: 's10c', name: "NestJS", icon: "SiNestjs" },
+      { id: 's10d', name: "Socket.io", icon: "SiSocketdotio" },
+      { id: 's10e', name: "JWT", icon: "SiJsonwebtokens" },
     ]
   },
   {
@@ -29,6 +33,9 @@ const STATIC_CATEGORIES = [
       { id: 's11', name: "MongoDB", icon: "SiMongodb" },
       { id: 's12', name: "PostgreSQL", icon: "SiPostgresql" },
       { id: 's13', name: "Prisma", icon: "SiPrisma" },
+      { id: 's13b', name: "MySQL", icon: "SiMysql" },
+      { id: 's13c', name: "Redis", icon: "SiRedis" },
+      { id: 's13d', name: "Supabase", icon: "SiSupabase" },
     ]
   },
   {

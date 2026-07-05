@@ -1,7 +1,7 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { Moon, Sun, Monitor } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export function ThemeToggle() {
@@ -34,15 +34,6 @@ export function ThemeToggle() {
           aria-label="Dark theme"
         >
           <Moon className="h-4 w-4" />
-        </button>
-      </div>
-      <div className="tooltip tooltip-bottom" data-tip="System">
-        <button
-          onClick={() => setTheme("system")}
-          className={`p-1.5 rounded-md transition-all duration-200 ${theme === 'system' ? 'bg-background shadow-sm text-primary' : 'text-muted-foreground hover:text-foreground hover:bg-muted'}`}
-          aria-label="System theme"
-        >
-          <Monitor className="h-4 w-4" />
         </button>
       </div>
     </div>

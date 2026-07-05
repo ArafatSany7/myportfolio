@@ -6,44 +6,6 @@ const ProjectsClient = dynamic(() => import("./ProjectsClient").then(mod => mod.
 
 const STATIC_PROJECTS = [
   {
-    id: "p1",
-    title: "E-Commerce Platform", 
-    description: "A full-stack e-commerce solution with Next.js, Stripe, and Prisma.",
-    image: "", 
-    liveUrl: "#",
-    githubUrl: "#",
-    tags: ["Next.js", "TypeScript", "Tailwind", "Prisma"],
-    purpose: "Built to demonstrate scalable e-commerce architecture.",
-    targetUsers: "Online shoppers and small business owners.",
-    keyFeatures: [
-      "Secure Authentication",
-      "Stripe Payment Integration",
-      "Admin Dashboard for product management",
-      "Responsive Design"
-    ],
-    challenges: "Handling complex state management for the cart across different devices.",
-    futureImprovements: "Implement AI-based product recommendations."
-  },
-  {
-    id: "p2",
-    title: "Task Management App",
-    description: "A collaborative task manager with real-time updates.",
-    image: "", 
-    liveUrl: "#",
-    githubUrl: "#",
-    tags: ["React", "Node.js", "Socket.io", "MongoDB"],
-    purpose: "To improve team productivity and task tracking.",
-    targetUsers: "Remote teams and project managers.",
-    keyFeatures: [
-      "Real-time updates via WebSockets",
-      "Drag and drop interface",
-      "User roles and permissions",
-      "Activity logging"
-    ],
-    challenges: "Ensuring real-time synchronization without race conditions.",
-    futureImprovements: "Add integration with Slack and GitHub."
-  },
-  {
     id: "p3",
     title: "AI Content Generator",
     description: "An AI-powered application that generates blog posts and social media content.",
@@ -66,13 +28,13 @@ const STATIC_PROJECTS = [
 
 export default async function ProjectsSection() {
   const dbProjects = await prisma.project.findMany({
-    orderBy: { createdAt: "asc" },
+    orderBy: { createdAt: "desc" },
   });
 
   
   const dynamicProjects = dbProjects.map(p => ({ ...p, title: p.name }));
 
-  const allProjects = [...STATIC_PROJECTS, ...dynamicProjects];
+  const allProjects = [...dynamicProjects, ...STATIC_PROJECTS].slice(0, 3);
 
   return (
     <section id="projects" className="py-20 bg-muted">
