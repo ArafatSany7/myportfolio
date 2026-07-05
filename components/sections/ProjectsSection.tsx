@@ -32,7 +32,7 @@ export default async function ProjectsSection() {
   });
 
   
-  const dynamicProjects = dbProjects.map(p => ({ ...p, title: p.name }));
+  const dynamicProjects = dbProjects.map((p: any) => ({ ...p, title: p.name }));
 
   const allProjects = [...dynamicProjects, ...STATIC_PROJECTS].slice(0, 3);
 
