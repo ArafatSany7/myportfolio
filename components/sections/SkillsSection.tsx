@@ -61,7 +61,7 @@ export default async function SkillsSection() {
   const categories = JSON.parse(JSON.stringify(STATIC_CATEGORIES));
 
   
-  skillsData.forEach((skill) => {
+  skillsData.forEach((skill: any) => {
     const catName = skill.category?.name || "Other";
     const existingCat = categories.find((c: any) => c.name.toLowerCase() === catName.toLowerCase());
     
