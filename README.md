@@ -3,8 +3,6 @@
 ## Overview
 A modern, dynamic personal portfolio website designed to showcase my projects, skills, professional journey, and services. Built with Next.js and React, it features a sleek, responsive design powered by Tailwind CSS, along with smooth animations using Framer Motion. The portfolio also integrates a backend using Prisma and PostgreSQL to manage dynamic content such as featured projects.
 
-## Screenshot
-![Portfolio Overview](./public/projects/dev%20main.png)
 
 ## Primary Technologies
 - **Frontend Framework:** Next.js (App Router), React
